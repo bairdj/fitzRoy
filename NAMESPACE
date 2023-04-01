@@ -2,6 +2,7 @@
 
 export(calculate_coaches_vote_possibilities)
 export(fetch_betting_odds_footywire)
+export(fetch_coach_details)
 export(fetch_coaches_votes)
 export(fetch_fixture)
 export(fetch_fixture_afl)
