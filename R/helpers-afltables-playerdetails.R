@@ -57,33 +57,7 @@ get_player_details_afltables <- function(team) {
   cli_team <- cli::cli_process_start("Fetching player details for {team}")
   valid_team <- team_check_afltables(team)
 
-  team_abr <- dplyr::case_when(
-    team == "Adelaide" ~ "adelaide",
-    team == "Brisbane Lions" ~ "brisbanel",
-    team == "Brisbane Bears" ~ "brisbaneb",
-    team == "Carlton" ~ "carlton",
-    team == "Collingwood" ~ "collingwood",
-    team == "Essendon" ~ "essendon",
-    team == "Fitzroy" ~ "fitzroy",
-    team == "Fremantle" ~ "fremantle",
-    team == "GWS" ~ "gws",
-    team == "Geelong" ~ "geelong",
-    team == "Gold Coast" ~ "goldcoast",
-    team == "Hawthorn" ~ "hawthorn",
-    team == "Melbourne" ~ "melbourne",
-    team == "North Melbourne" ~ "kangaroos",
-    team == "Kangaroos" ~ "kangaroos",
-    team == "Port Adelaide" ~ "padelaide",
-    team == "Richmond" ~ "richmond",
-    team == "St Kilda" ~ "stkilda",
-    team == "Sydney" ~ "swans",
-    team == "South Melbourne" ~ "swans",
-    team == "West Coast" ~ "westcoast",
-    team == "University" ~ "university",
-    team == "Western Bulldogs" ~ "bullldogs",
-    team == "Footscray" ~ "bullldogs",
-    TRUE ~ ""
-  )
+  team_abr <- team_abr_afltables(team)
 
   url <- paste0("https://afltables.com/afl/stats/alltime/", team_abr, ".html")
   html <- rvest::read_html(url)

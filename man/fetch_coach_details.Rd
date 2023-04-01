@@ -2,11 +2,16 @@
 % Please edit documentation in R/fetch-coach-details.R
 \name{fetch_coach_details}
 \alias{fetch_coach_details}
+\alias{fetch_coach_details_afltables}
 \title{Fetch coach details}
 \usage{
-fetch_coach_details(source = "afltables")
+fetch_coach_details(team = NULL, source = "afltables")
+
+fetch_coach_details_afltables(team)
 }
 \arguments{
+\item{team}{Only fetch details for coaches of this team. NULL returns all coaches.}
+
 \item{source}{The source to use. By default this is "afltables".}
 }
 \value{
@@ -18,15 +23,21 @@ number of wins, losses and draws, premierships and grand finals.
 
 By default the source used will be AFL Tables.
 }
+\details{
+If the team argument is provided, the function will only include matches
+where the specified team was coached by the coach in question. If the
+coach has coached multiple teams, only matches where they coached
+the specified team will be included.
+}
+\section{Functions}{
+\itemize{
+\item \code{fetch_coach_details_afltables()}: Fetch coach details from AFL Tables.
+
+}}
 \examples{
 \dontrun{
 coaches <- fetch_coach_details()
 }
 
-}
-\seealso{
-\itemize{
-\item \link{fetch_coach_details_afltables} for AFL Tables data.
-}
 }
 \concept{fetch coach functions}

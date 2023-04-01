@@ -164,3 +164,33 @@ get_full_team_afltables <- function(short) {
     "WC" ~ "West Coast"
   )
 }
+
+team_abr_afltables <- function(team) {
+  dplyr::case_when(
+    team == "Adelaide" ~ "adelaide",
+    team == "Brisbane Lions" ~ "brisbanel",
+    team == "Brisbane Bears" ~ "brisbaneb",
+    team == "Carlton" ~ "carlton",
+    team == "Collingwood" ~ "collingwood",
+    team == "Essendon" ~ "essendon",
+    team == "Fitzroy" ~ "fitzroy",
+    team == "Fremantle" ~ "fremantle",
+    team == "GWS" ~ "gws",
+    team == "Geelong" ~ "geelong",
+    team == "Gold Coast" ~ "goldcoast",
+    team == "Hawthorn" ~ "hawthorn",
+    team == "Melbourne" ~ "melbourne",
+    team == "North Melbourne" ~ "kangaroos",
+    team == "Kangaroos" ~ "kangaroos",
+    team == "Port Adelaide" ~ "padelaide",
+    team == "Richmond" ~ "richmond",
+    team == "St Kilda" ~ "stkilda",
+    team == "Sydney" ~ "swans",
+    team == "South Melbourne" ~ "swans",
+    team == "West Coast" ~ "westcoast",
+    team == "University" ~ "university",
+    team == "Western Bulldogs" ~ "bullldogs",
+    team == "Footscray" ~ "bullldogs",
+    TRUE ~ ""
+  )
+}
