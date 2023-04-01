@@ -49,7 +49,7 @@ fetch_coach_details_afltables <- function(team) {
   }
 
   coach_table <- if(is.null(team)) {
-    get_coaches_table()
+    get_all_coaches_table()
   } else {
     get_coaches_by_team_table(team)
   }
