@@ -117,7 +117,7 @@ fetch_coach_details_afltables <- function() {
 
   # Split teams into a list
   coach_table <- coach_table %>%
-    dplyr::mutate(teams = strsplit(.data$teams, " "))
+    dplyr::mutate(teams = purrr::map(strsplit(.data$teams, " "), get_full_team_afltables))
 
   # Drop win percentage columns
   # There are different ways to calculate this, so leave up to user

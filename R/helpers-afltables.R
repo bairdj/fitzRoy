@@ -129,3 +129,38 @@ convert_results <- function(results) {
       .data$Margin * -1
     ))
 }
+
+#' Get full team name from two-letter abbreviation
+#' 
+#' @param short Two-letter abbreviation
+#' @return Full team name
+#' @keywords internal
+get_full_team_afltables <- function(short) {
+  dplyr::case_match(
+    short,
+    "AD" ~ "Adelaide",
+    "BB" ~ "Brisbane Bears",
+    "BL" ~ "Brisbane Lions",
+    "CA" ~ "Carlton",
+    "CW" ~ "Collingwood",
+    "ES" ~ "Essendon",
+    "FI" ~ "Fitzroy",
+    "FO" ~ "Footscray",
+    "FR" ~ "Fremantle",
+    "GC" ~ "Gold Coast",
+    "GE" ~ "Geelong",
+    "GW" ~ "GWS",
+    "HW" ~ "Hawthorn",
+    "KA" ~ "Kangaroos",
+    "ME" ~ "Melbourne",
+    "NM" ~ "North Melbourne",
+    "PA" ~ "Port Adelaide",
+    "RI" ~ "Richmond",
+    "SK" ~ "St Kilda",
+    "SM" ~ "South Melbourne",
+    "SY" ~ "Sydney",
+    "UN" ~ "University",
+    "WB" ~ "Western Bulldogs",
+    "WC" ~ "West Coast"
+  )
+}

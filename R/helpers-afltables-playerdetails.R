@@ -26,32 +26,12 @@ get_player_debut_afltables <- function(team = NULL) {
     dplyr::mutate_at(c("DOB", "debut_date"), lubridate::dmy) %>%
     dplyr::mutate(debut_season = as.numeric(format(.data$debut_date, "%Y")))
 
-  teams <- data.frame(
-    stringsAsFactors = FALSE,
-    original = c(
-      "AD", "BB", "BL", "CA", "CW",
-      "ES", "FI", "FO", "FR", "GC",
-      "GE", "GW", "HW", "KA", "ME",
-      "NM", "PA", "RI", "SK",
-      "SM", "SY", "UN", "WB",
-      "WC"
-    ),
-    full = c(
-      "Adelaide", "Brisbane Bears", "Brisbane Lions", "Carlton", "Collingwood",
-      "Essendon", "Fitzroy", "Footscray", "Fremantle", "Gold Coast",
-      "Geelong", "GWS", "Hawthorn", "Kangaroos", "Melbourne",
-      "North Melbourne", "Port Adelaide", "Richmond", "St Kilda",
-      "South Melbourne", "Sydney", "University", "Western Bulldogs",
-      "West Coast"
-    )
-  )
-
   # Fix teams
   df <- df %>%
-    dplyr::left_join(teams, by = c("Team" = "original")) %>%
-    dplyr::rename(debut_team = "full") %>%
-    dplyr::left_join(teams, by = c("Oppo" = "original")) %>%
-    dplyr::rename(debut_opposition = "full")
+    dplyr::mutate(
+      debut_team = get_full_team_afltables(.data$Team),
+      debut_opposition = get_full_team_afltables(.data$Oppo)
+    )
 
 
   # Filter out team

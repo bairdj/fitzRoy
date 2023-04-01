@@ -17,8 +17,6 @@ A tibble with coach details.
 number of wins, losses and draws, premierships and grand finals.
 
 By default the source used will be AFL Tables.
-
-\code{\link[=fetch_coach_details_afltables]{fetch_coach_details_afltables()}} can be called directly and return data from AFL Tables.
 }
 \examples{
 \dontrun{
